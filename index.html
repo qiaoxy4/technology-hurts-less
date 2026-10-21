@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100b1c">
+  <meta name="description" content="The World Makes Room — an interactive experiment in technology that adapts to people.">
+  <title>The World Makes Room — I make technology hurt less</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="The World Makes Room home">T<span>·</span>W<span>·</span>M<span>·</span>R</a>
+    <div class="top-note">AN INTERACTIVE THOUGHT EXPERIMENT <span>—</span> 001</div>
+    <button class="sound-toggle" id="motionToggle" type="button" aria-pressed="false">MOTION: ON</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> A SMALL WORLD, A DIFFERENT RULE</p>
+      <h1>THE WORLD<br><em>MAKES ROOM.</em></h1>
+      <p class="intro-copy">What if technology learned to make room for us —<br class="desktop-only"> instead of asking us to fit into it?</p>
+    </section>
+
+    <section class="world" id="world" aria-label="Interactive fantasy world">
+      <div class="world-caption caption-left"><span>01 / THE OLD RULE</span><b>FITTING IN</b></div>
+      <div class="world-caption caption-right"><span>02 / A NEW POSSIBILITY</span><b>MAKING ROOM</b></div>
+
+      <div class="mist mist-one"></div><div class="mist mist-two"></div>
+      <div class="floor-grid" aria-hidden="true"></div>
+
+      <svg class="scene" viewBox="0 0 1200 590" role="img" aria-labelledby="sceneTitle sceneDesc" preserveAspectRatio="xMidYMid meet">
+        <title id="sceneTitle">A world changing to accommodate its inhabitants</title>
+        <desc id="sceneDesc">A small imaginative creature faces a narrow, tangled route. At the center, a glowing geometric doorway expands and clears a path.</desc>
+        <defs>
+          <linearGradient id="portalFill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f8b9ff" stop-opacity=".10"/>
+            <stop offset="50%" stop-color="#b77cff" stop-opacity=".04"/>
+            <stop offset="100%" stop-color="#ffcf9f" stop-opacity=".14"/>
+          </linearGradient>
+          <linearGradient id="pathGlow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#f5a3ff" stop-opacity=".1"/>
+            <stop offset="50%" stop-color="#e8b6ff" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#ffd6a5" stop-opacity=".9"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="16"/>
+          </filter>
+          <radialGradient id="creatureSkin" cx="35%" cy="25%" r="80%">
+            <stop offset="0%" stop-color="#f6d5cf"/>
+            <stop offset="55%" stop-color="#b98eaf"/>
+            <stop offset="100%" stop-color="#6c567f"/>
+          </radialGradient>
+        </defs>
+
+        <!-- tangled rules on the left -->
+        <g class="barriers" fill="none" stroke="#d99aff" stroke-width="1.5" opacity=".7">
+          <path d="M55 145 L185 205 L105 285 L245 335 L140 430"/>
+          <path d="M40 250 L175 165 L235 245 L145 325 L270 400"/>
+          <path d="M100 105 L130 220 L75 355 L185 440"/>
+          <path d="M225 130 L175 260 L250 300 L205 455"/>
+          <path d="M40 390 L130 350 L250 470"/>
+          <path d="M65 185 L245 185 L200 390 L275 420"/>
+          <path d="M75 300 L230 225 L270 315"/>
+        </g>
+        <g class="barrier-nodes" fill="#f4b4ff" filter="url(#glow)">
+          <circle cx="185" cy="205" r="3"/><circle cx="105" cy="285" r="3"/>
+          <circle cx="245" cy="335" r="3"/><circle cx="175" cy="165" r="3"/>
+          <circle cx="145" cy="325" r="3"/><circle cx="250" cy="470" r="3"/>
+        </g>
+        <g class="tiny-symbols" fill="none" stroke="#e8c8ff" stroke-width="1.2" opacity=".65">
+          <circle cx="280" cy="175" r="12"/><path d="M272 175h16M280 167v16"/>
+          <path d="M305 240 l9 -15 9 15z"/><circle cx="300" cy="370" r="8"/>
+          <path d="M295 365l10 10M305 365l-10 10"/>
+          <rect x="42" y="455" width="24" height="24" transform="rotate(20 54 467)"/>
+        </g>
+
+        <!-- old stairs, transforming into a ramp -->
+        <g class="stairs" fill="none" stroke="#bda2d7" stroke-width="2">
+          <path d="M330 450 h35 v-28 h35 v-28 h35 v-28 h35"/>
+          <path d="M330 450 v16 h140 v-100" opacity=".35"/>
+        </g>
+        <path class="ramp" d="M325 452 Q405 435 480 382" fill="none" stroke="url(#pathGlow)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+
+        <!-- the breathing doorway -->
+        <ellipse class="portal-aura" cx="675" cy="285" rx="150" ry="220" fill="#c78bff" opacity=".2" filter="url(#softGlow)"/>
+        <g class="portal">
+          <path class="portal-membrane" d="M565 470 L565 165 Q675 85 785 165 L785 470 Z" fill="url(#portalFill)" stroke="#e6b7ff" stroke-width="2"/>
+          <path class="portal-line line-one" d="M585 470 L585 175 Q675 110 765 175 L765 470" fill="none" stroke="#f4c6ff" stroke-width="1.5"/>
+          <path class="portal-line line-two" d="M610 470 L610 190 Q675 140 740 190 L740 470" fill="none" stroke="#d6a1ff" stroke-width="1.3"/>
+          <path class="portal-line line-three" d="M540 470 L540 150 Q675 45 810 150 L810 470" fill="none" stroke="#bd83ff" stroke-width="1.2" opacity=".75"/>
+          <path class="portal-cross" d="M565 260 H785 M565 350 H785 M620 470 V145 M730 470 V145" stroke="#e4baff" stroke-width=".8" opacity=".38" fill="none"/>
+          <path class="portal-floor" d="M530 470 Q675 435 820 470" fill="none" stroke="#ffd5a8" stroke-width="2" filter="url(#glow)"/>
+        </g>
+        <g class="ripple" fill="none" stroke="#ffe0b6" stroke-width="1.5" opacity=".8">
+          <ellipse cx="675" cy="290" rx="45" ry="82"/>
+          <ellipse cx="675" cy="290" rx="72" ry="125"/>
+          <ellipse cx="675" cy="290" rx="98" ry="165"/>
+        </g>
+
+        <!-- same creature on each side; bodies are not "fixed" -->
+        <g class="creature creature-before" transform="translate(390 370)">
+          <ellipse cx="0" cy="66" rx="48" ry="10" fill="#070611" opacity=".55"/>
+          <path d="M-25 24 Q-44 -7 -23 -38 Q-5 -63 23 -43 Q45 -24 31 15 Q20 42 -5 42 Q-20 40 -25 24Z" fill="url(#creatureSkin)" stroke="#f1c9e6" stroke-width="1.4"/>
+          <path d="M-18 -31 Q-46 -56 -43 -74 Q-13 -67 -4 -42" fill="#a98ac6" stroke="#eac8ec" stroke-width="1.2"/>
+          <path d="M15 -38 Q32 -66 49 -60 Q44 -35 25 -22" fill="#9d7bb9" stroke="#eac8ec" stroke-width="1.2"/>
+          <ellipse cx="-10" cy="-15" rx="6" ry="9" fill="#26172f"/><ellipse cx="15" cy="-15" rx="6" ry="9" fill="#26172f"/>
+          <circle cx="-12" cy="-18" r="2" fill="#fff0f6"/><circle cx="13" cy="-18" r="2" fill="#fff0f6"/>
+          <path d="M-4 3 Q2 7 8 2" fill="none" stroke="#593a60" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M-18 35 L-27 54 M17 35 L22 54" stroke="#caa9d2" stroke-width="7" stroke-linecap="round"/>
+          <path d="M-28 55 L-14 55 M15 55 L29 55" stroke="#e5c6e4" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <g class="creature creature-after" transform="translate(930 365)">
+          <ellipse cx="0" cy="70" rx="48" ry="10" fill="#070611" opacity=".45"/>
+          <path d="M-25 24 Q-44 -7 -23 -38 Q-5 -63 23 -43 Q45 -24 31 15 Q20 42 -5 42 Q-20 40 -25 24Z" fill="url(#creatureSkin)" stroke="#ffe0c2" stroke-width="1.4"/>
+          <path d="M-18 -31 Q-46 -56 -43 -74 Q-13 -67 -4 -42" fill="#a98ac6" stroke="#ffe0c2" stroke-width="1.2"/>
+          <path d="M15 -38 Q32 -66 49 -60 Q44 -35 25 -22" fill="#9d7bb9" stroke="#ffe0c2" stroke-width="1.2"/>
+          <ellipse cx="-10" cy="-15" rx="6" ry="9" fill="#26172f"/><ellipse cx="15" cy="-15" rx="6" ry="9" fill="#26172f"/>
+          <circle cx="-12" cy="-18" r="2" fill="#fff"/><circle cx="13" cy="-18" r="2" fill="#fff"/>
+          <path d="M-4 3 Q2 7 8 2" fill="none" stroke="#593a60" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M-18 35 L-27 54 M17 35 L22 54" stroke="#caa9d2" stroke-width="7" stroke-linecap="round"/>
+          <path d="M-28 55 L-14 55 M15 55 L29 55" stroke="#e5c6e4" stroke-width="5" stroke-linecap="round"/>
+          <g class="creature-sparkles" fill="#ffe0b6" filter="url(#glow)">
+            <circle cx="-42" cy="-40" r="2.5"/><circle cx="45" cy="-15" r="2"/><circle cx="32" cy="28" r="2"/>
+          </g>
+        </g>
+
+        <!-- light route through the system -->
+        <path class="clear-route" d="M450 485 Q550 520 675 492 T930 485" fill="none" stroke="url(#pathGlow)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>
+        <g class="route-points" fill="#ffe1b8" filter="url(#glow)">
+          <circle cx="520" cy="500" r="3"/><circle cx="675" cy="492" r="4"/><circle cx="825" cy="500" r="3"/>
+        </g>
+      </svg>
+
+      <div class="world-instruction">
+        <span class="instruction-mark">✳</span>
+        <span id="instructionText">The path was built for someone else.</span>
+      </div>
+      <button class="change-button" id="changeButton" type="button">
+        <span class="button-icon">↗</span>
+        <span id="buttonText">MAKE ROOM</span>
+      </button>
+      <div class="world-status" id="worldStatus" aria-live="polite">SYSTEM STATUS <span>RIGID</span></div>
+    </section>
+
+    <section class="manifesto" id="manifesto">
+      <p class="eyebrow">MY SUPERPOWER</p>
+      <h2>I MAKE TECHNOLOGY<br><em>HURT LESS.</em></h2>
+      <p class="manifesto-copy">I notice the small frictions a system asks people to live with.<br class="desktop-only"> Then I ask a different question: what if the system changed?</p>
+      <div class="final-line">
+        <span class="final-rule"></span>
+        <p>THE PERSON DIDN'T CHANGE.<br><strong>THE SYSTEM DID.</strong></p>
+        <span class="final-rule"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>THE WORLD MAKES ROOM</span>
+    <span>A NOTE ON ACCESS, CARE & INTERACTION</span>
+    <a href="#world">RETURN TO THE WORLD ↑</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
